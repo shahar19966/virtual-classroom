@@ -1,8 +1,20 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Button, Container, Row } from 'react-bootstrap'
 import './LandingPage.css'
-    
+import { useNavigate } from "react-router-dom";
 function LandingPage() {
+
+    const navigate = useNavigate();
+  useEffect(() => {
+        const userInfo = localStorage.getItem("userInfo");
+
+        if (userInfo) {
+            navigate("/patients");
+
+        }
+    },[navigate]);
+
+
   return (
       <div className='main'>
           <Container>
@@ -16,7 +28,7 @@ function LandingPage() {
                           <a href='/login'>
                               <Button size='lg' className='landingbutton'>Login</Button>
                           </a>
-                          <a href='/'>
+                          <a href='/register'>
                               <Button size='lg' className='landingbutton' variant='outline-primary'>Sing up</Button>
                           </a>
                           
