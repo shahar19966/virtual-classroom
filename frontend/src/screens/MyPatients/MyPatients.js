@@ -129,12 +129,23 @@ function MyPatients() {
                                       </div>           
                          </span>
                         <div>
+                          <Button href={`/screening/${patient._id}`}
+                            className="mx-2"
+                            variant="success"
+                            onClick={() => {
+                                window.confirm("The scan starts")
+                            }}>start screening</Button>
+                          <Button href={`/ScanHistory/${patient._id}`}
+                            className="mx-2"
+                            variant="dark"
+                          >Scan history</Button>
                                   <Button href={`/patients/${patient._id}`}>Edit</Button>
                                   <Button
                                       variant="danger"
                                       className="mx-2"
                                       onClick={()=>deleteHandler(patient._id)}
                           >Delete</Button>
+                            
                        
                           <Button onClick={() => {
                             let string = `${patient.firstName} ${patient.lastName} - ${patient.id}\n\nFirst name: ${patient.firstName}\nLast name: ${patient.lastName}\n`;

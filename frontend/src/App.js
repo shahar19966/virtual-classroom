@@ -11,6 +11,8 @@ import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import CreatePatient from './screens/CreatePatient/CreatePatient';
 import SingelPatient from './screens/SinglPatient/SinglPatient';
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
+import { StartScreening } from './screens/StartScreening/StartScreening';
+import { ScanHistory } from './screens/ScanHistory/ScanHistory';
 
 const App = () => (
   <BrowserRouter>
@@ -23,7 +25,9 @@ const App = () => (
         <Route path="/CreatePatient" element={<CreatePatient />} exact />
         <Route path="/patients/:id" element={<SingelPatient />} exact />
         <Route path="/profile" element={<ProfileScreen/>} exact/>
-        <Route path="/patients" element={<MyPatients/>}  />
+        <Route path="/patients" element={<MyPatients />} />
+        <Route path="/screening/:id" element={<StartScreening />} exact />
+        <Route path="/ScanHistory/:id" element={<ScanHistory/>}exact />
       </Routes>
       
   </main>
