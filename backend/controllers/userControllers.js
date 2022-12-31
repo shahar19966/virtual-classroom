@@ -2,6 +2,8 @@
 const User = require('../models/userModel');
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../utils/generateToken");
+const QueueHandler = require('../QueueHandler');
+
 
 const registerUser = async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
@@ -37,7 +39,6 @@ const registerUser = async (req, res) => {
 };
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-  
     const user = await User.findOne({ email });
   
     if (user && (await user.matchPassword(password))) {
@@ -81,4 +82,15 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, authUser,updateUserProfile};
+const StartScreening = async (req, res) => {
+  let queueHandler = new QueueHandler()
+  const {patient:{ firstName, lastName, email} } = req.body;
+  queueHandler.sendMessage('StartScreening', JSON.stringify({email, firstName, lastName }));
+  //console.log(email);
+  res.status(200);
+  res.send();
+};
+
+module.exports = { registerUser, authUser,updateUserProfile,StartScreening};
+
+

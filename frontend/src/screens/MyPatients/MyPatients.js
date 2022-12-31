@@ -7,7 +7,7 @@ import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import { useDispatch, useSelector } from "react-redux";
 import jsPDF from "jspdf";
 import { renderToString } from "react-dom/server";
-import { listPatients,deletePatientAction } from '../../actions/patientsActions';
+import { listPatients,deletePatientAction,StartScreening } from '../../actions/patientsActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 
@@ -129,11 +129,12 @@ function MyPatients() {
                                       </div>           
                          </span>
                         <div>
-                          <Button href={`/screening/${patient._id}`}
+                          <Button  href={`/screening/${patient._id}`}
                             className="mx-2"
                             variant="success"
                             onClick={() => {
-                                window.confirm("The scan starts")
+                                window.confirm("The scan starts");
+                                return dispatch(StartScreening(patient));
                             }}>start screening</Button>
                           <Button href={`/ScanHistory/${patient._id}`}
                             className="mx-2"

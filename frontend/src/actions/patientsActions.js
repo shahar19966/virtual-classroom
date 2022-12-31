@@ -166,3 +166,25 @@ export const deletePatientAction = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const StartScreening = (patient) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(
+      "/api/users/startScreening",
+      {patient},config);
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+};

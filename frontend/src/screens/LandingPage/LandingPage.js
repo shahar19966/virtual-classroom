@@ -21,7 +21,7 @@ function LandingPage() {
               <Row>
                   <div className='intro-text'>
                       <div>
-                          <h1 className='title'>Welcome to Virtual classroom </h1>
+                          <h1 className='title'>Welcome to Virtual Classroom </h1>
                           <p className='subtitle'> ADHD screening using VR</p>
                       </div>
                       <div className='buttonContainer'>
@@ -29,9 +29,8 @@ function LandingPage() {
                               <Button size='lg' className='landingbutton'>Login</Button>
                           </a>
                           <a href='/register'>
-                              <Button size='lg' className='landingbutton' variant='outline-primary'>Sing up</Button>
+                              <Button size='lg' className='landingbutton' variant='outline-primary'>Sign up</Button>
                           </a>
-                          
                       </div>
                 </div>
               </Row>
