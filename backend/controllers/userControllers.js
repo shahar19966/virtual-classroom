@@ -86,11 +86,22 @@ const StartScreening = async (req, res) => {
   let queueHandler = new QueueHandler()
   const {patient:{ firstName, lastName, email} } = req.body;
   queueHandler.sendMessage('StartScreening', JSON.stringify({email, firstName, lastName }));
+  /*queueHandler.receiveMessages('FinishScreening',(msg) =>{
+    
+  })*/
   //console.log(email);
   res.status(200);
   res.send();
 };
 
-module.exports = { registerUser, authUser,updateUserProfile,StartScreening};
+const StopScreening = async (req, res) => {
+  let queueHandler = new QueueHandler()
+  queueHandler.sendMessage('StopScreening', '');
+  //console.log(email);
+  res.status(200);
+  res.send();
+};
+
+module.exports = { registerUser, authUser,updateUserProfile,StartScreening,StopScreening};
 
 

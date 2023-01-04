@@ -188,3 +188,25 @@ export const StartScreening = (patient) => async (dispatch, getState) => {
     return false;
   }
 };
+
+export const StopScreening = () => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      "/api/users/stopScreening",
+      config);
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+};

@@ -1,8 +1,11 @@
 import React from "react";
 import './StartScreening.css'
 import { Spinner, Container, Button } from "react-bootstrap";
+import { StopScreening } from '../../actions/patientsActions';
+import { useDispatch } from "react-redux";
 
 export const StartScreening = () => {
+    const dispatch = useDispatch();
     return (
         <Container className="startScreen">
             <Spinner animation="grow" variant="warning" />
@@ -22,8 +25,13 @@ export const StartScreening = () => {
             </div>
             <br/>
             <Button variant="danger"
+              href={`/patients`}
               onClick={() => {
-                window.confirm("Are you sure?")
+                if(window.confirm("Are you sure?"))
+                {
+                  dispatch(StopScreening());
+                }
+
             }}>Stop screening</Button>{' '}
           
             </Container>
