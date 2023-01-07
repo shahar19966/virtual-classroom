@@ -128,7 +128,22 @@ function MyPatients() {
                                       </Accordion.Item>
                                       </div>           
                          </span>
-                        <div>
+                        
+                                  
+                          </CardHeader>
+                          </CustomToggle>
+                          <Accordion.Collapse eventKey="0">
+                          <Card.Body id="1">
+                        <blockquote className="blockquote mb-0" >
+                          <p>First name: {patient.firstName}</p>
+                          <p>Last name: {patient.lastName}</p>
+                          <p>ID: {patient.id}</p>
+                          <p>Gander: {patient.gander}</p>
+                          <p>Date of birth: {patient.dateOfBirth.substring(0,10)}</p>
+                          <p>Email: {patient.email}</p>
+                          <p>Recommendation: {patient.recommendation}</p>
+                          <p>Medicines: {patient.medicines}</p>
+                          <div style={{float:"right"}}>
                           <Button  href={`/screening/${patient._id}`}
                             className="mx-2"
                             variant="success"
@@ -158,21 +173,6 @@ function MyPatients() {
                           }
                           >PDF</Button>
                                   </div>
-                                  
-                          </CardHeader>
-                          </CustomToggle>
-                          <Accordion.Collapse eventKey="0">
-                          <Card.Body id="1">
-                        <blockquote className="blockquote mb-0" >
-                          <p>First name: {patient.firstName}</p>
-                          <p>Last name: {patient.lastName}</p>
-                          <p>ID: {patient.id}</p>
-                          <p>Gander: {patient.gander}</p>
-                          <p>Date of birth: {patient.dateOfBirth.substring(0,10)}</p>
-                          <p>Email: {patient.email}</p>
-                          <p>Recommendation: {patient.recommendation}</p>
-                          <p>Medicines: {patient.medicines}</p>
-
                       <footer className="blockquote-footer">
                         Created on Date {patient.createdAt.substring(0, 10)}
                       </footer>

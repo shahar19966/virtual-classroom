@@ -85,7 +85,21 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 const StartScreening = async (req, res) => {
   let queueHandler = new QueueHandler()
   const {patient:{ firstName, lastName, email} } = req.body;
-  queueHandler.sendMessage('StartScreening', JSON.stringify({email, firstName, lastName }));
+  const StartSessionMessage ={
+    SessionConfiguration: {
+      SessionLengthInMin : 5,
+      LettersDelayInSec : 1,
+      DisturbanceTimeRangeMin : 5,
+      DisturbanceTimeRangeMax :5,
+      AmountOfShouldPress :12
+      },
+    Patient: 
+    { 
+      firstName:firstName, 
+      lastName:lastName, 
+      email:email}
+  }
+  queueHandler.sendMessage('StartScreening', JSON.stringify(StartSessionMessage));
   /*queueHandler.receiveMessages('FinishScreening',(msg) =>{
     
   })*/
