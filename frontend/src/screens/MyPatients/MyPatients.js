@@ -10,9 +10,15 @@ import { renderToString } from "react-dom/server";
 import { listPatients,deletePatientAction,StartScreening } from '../../actions/patientsActions';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
+import './MyPatients.css'
 
 function MyPatients() {
 
+  const [SessionLengthInMin, setSessionLengthInMin] = useState("");
+  const [LettersDelayInSec, setLettersDelayInSec] = useState("");
+   const [DisturbanceTimeRangeMin, setDisturbanceTimeRangeMin] = useState("");
+   const [DisturbanceTimeRangeMax, setDisturbanceTimeRangeMax] = useState("");
+   const [AmountOfShouldPress, setAmountOfShouldPress] = useState("");
 
   const [search, setSearch] = useState("");
 
@@ -135,6 +141,8 @@ function MyPatients() {
                           <Accordion.Collapse eventKey="0">
                           <Card.Body id="1">
                         <blockquote className="blockquote mb-0" >
+                          <div className='div-input'>
+                          <div className='div-input-web'>
                           <p>First name: {patient.firstName}</p>
                           <p>Last name: {patient.lastName}</p>
                           <p>ID: {patient.id}</p>
@@ -143,6 +151,53 @@ function MyPatients() {
                           <p>Email: {patient.email}</p>
                           <p>Recommendation: {patient.recommendation}</p>
                           <p>Medicines: {patient.medicines}</p>
+                            </div>
+                            <div>
+                              <h5><b style={{ color: 'blue' }} >Please enter the session details:</b></h5>
+                            <Form.Group className='title-12' controlId="firstName">
+                <Form.Label className='label-input'>Session length:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Session length"
+                  value={SessionLengthInMin}
+                  onChange={(e) => setSessionLengthInMin(e.target.value)}
+                ></Form.Control>
+                              </Form.Group>
+                              <Form.Group className='title-12' controlId="Letters delay">
+                <Form.Label className='label-input'>Letters delay:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Letters delay"
+                  value={LettersDelayInSec}
+                  onChange={(e) => setLettersDelayInSec(e.target.value)}
+                ></Form.Control>
+                              </Form.Group>
+                              <Form.Group className='title-12' controlId="DisturbanceTimeRange">
+                <Form.Label className='label-input-Range'>Disturbance time range:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="MIN"
+                  value={DisturbanceTimeRangeMin}
+                  onChange={(e) => setDisturbanceTimeRangeMin(e.target.value)}
+                                ></Form.Control>
+                                 <Form.Control
+                  type="text"
+                  placeholder="MAX"
+                  value={DisturbanceTimeRangeMax}
+                  onChange={(e) => setDisturbanceTimeRangeMax(e.target.value)}
+                ></Form.Control>
+                              </Form.Group>
+                              <Form.Group className='title-12' controlId="Clicks amount">
+                <Form.Label className='label-input' >Clicks amount:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Clicks amount"
+                  value={AmountOfShouldPress}
+                  onChange={(e) => setAmountOfShouldPress(e.target.value)}
+                ></Form.Control>
+                              </Form.Group>
+                            </div>
+                            </div>
                           <div style={{float:"right"}}>
                           <Button  href={`/screening/${patient._id}`}
                             className="mx-2"

@@ -1,0 +1,20 @@
+.div-input{
+    display: flex;
+}
+.div-input-web{
+    padding-right: 250px
+}
+.title-12{
+  display: flex;
+  margin-bottom: 15px;
+}
+.label-input{
+    width: 200px;
+    padding: 5px;
+}
+
+.label-input-Range
+{
+    width: 575px;
+    padding: 5px;
+}
