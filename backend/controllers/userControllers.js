@@ -91,7 +91,7 @@ const StartScreening = async (req, res) => {
       LettersDelayInSec : 1,
       DisturbanceTimeRangeMin : 5,
       DisturbanceTimeRangeMax :5,
-      AmountOfShouldPress :12
+      AmountOfShouldPress :2
       },
     Patient: 
     { 
